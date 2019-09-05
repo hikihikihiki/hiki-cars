@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
-  get 'users/show'
-  get 'users/index'
-  get 'users/leave'
-  get 'users/new'
-  get 'mycars/index'
-  get 'mycars/search'
+  
+  resources :users, only: %i(show index leave new)
+  resources :mycars, only: %i(index search)
+  resources :maker, only: %i(create destroy)
+
   get 'welcome/index'
+  
   devise_for :users, controllers: {
     :confirmations => 'users/confirmations',
   }
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
   root 'welcome#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_scope :user do
