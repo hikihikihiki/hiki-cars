@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get'/mycars/search' => 'mycars#search'
   get 'welcome/index'
 
-  namespace :admin do
+  namespace :admins do
 
   root to:'admins#index'
 
