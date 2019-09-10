@@ -1,2 +1,0 @@
-class MakersController < ApplicationController
-end

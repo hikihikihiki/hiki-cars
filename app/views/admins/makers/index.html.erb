@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+
+<h1>メーカー追加、編集ページ</h1>
+
+<%= form_for(@new_maker, url: admins_makers_path) do |f| %>
+ <%= f.label :maker, "新規追加" %>
+ <%= f.text_field :maker %>
+ <%= f.submit "追加" %>
+<%end%>
+
+<% if @edit_maker %>
+  <%= form_for(@edit_maker, url: admins_makers_path(@edit_maker)) do |f| %>
+    <%= f.label :maker, "編集" %>
+    <%= f.text_field :maker %>
+    <%= f.submit "編集", "data-confirm" => "この内容でよろしいですか？" %>
+  <%end%>
+  <%= link_to "削除", admins_makers_path(@edit_maker), method: :delete,
+   "data-confirm" => "削除してよろしいですか？" %>
+<%end%>
+
+        <% @makers.each.with_index(1) do |maker, index| %>
+
+          <%= link_to "#{maker.maker}", edit_admins_maker_path(maker.id) %>
+
+          <% if index == @makers.size %>
+            <% break %>
+          <% end %>
+
+          <% if index % 6 == 0 %>
+
+          <% end %>
+
+        <% end %>
