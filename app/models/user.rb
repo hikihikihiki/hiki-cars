@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def inactive_message
     confirmed? ? super : :needs_confirmation
   end
+  
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :profile, presence: true, length: { maximum: 160 }
+  
 end

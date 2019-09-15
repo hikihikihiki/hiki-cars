@@ -10,7 +10,17 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
+//= require select2
 //= require_tree .
+
+$('.js-searchable').select2({
+  width: 200,
+  allowClear: true
+});

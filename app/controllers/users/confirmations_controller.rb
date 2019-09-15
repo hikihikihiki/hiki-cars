@@ -12,6 +12,10 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   # end
 
   # GET /resource/confirmation?confirmation_token=abcdef
+  def new
+    @user = User.new
+  end
+  
   def show
     self.resource = resource_class.find_by_confirmation_token(params[:confirmation_token]) if params[:confirmation_token].present?
     super if resource.nil? or resource.confirmed?
@@ -46,4 +50,4 @@ end
   # def after_confirmation_path_for(resource_name, resource)
   #   super(resource_name, resource)
   # end
-end
+
