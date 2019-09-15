@@ -1,0 +1,107 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require select2
+ *= require select2-bootstrap
+
+ */
+
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+
+ @import "bootstrap";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.notice{
+	color: green;
+	text-align: right;
+	padding-left: 150px;
+}
+
+body {
+  font-family: Comic Sans MS ;
+  height: 100%;
+  padding-bottom: 50px;
+}
+
+html{
+  height: 100%;
+}
+
+.alert{
+	color: green;
+	text-align: left;
+	padding-left: 150px;
+}
+
+nav ul{
+    overflow: hidden;
+	margin: 0 auto;
+	padding: 0 3%;
+	width: 94%;
+	max-width: 960px;
+}
+
+nav ul li {
+    position: relative;
+    display: inline;
+    text-align: center;
+	width: 90%;
+	padding: 10px 25px 5px 5px;
+}
+
+nav ul li a {
+    font-family: 'Dancing Script', cursive;
+    color: #white;
+    font-size:35px;
+	text-decoration: none;
+}
+
+nav ul li a:hover{
+    border-bottom: dotted 1px #fff;
+    text-decoration: none;
+
+}
+
+ .navbar{
+ background-color: #660099;
+ margin-bottom: 0;
+ }
+
+ .navbar-header{
+ color:white;
+ }
+
+.navbar-nav > li > a {
+color:white;
+ }
+
+.error-explanation{
+	color: red;
+}
+
+.error-explanation ul{
+	padding-left:60px;
+}

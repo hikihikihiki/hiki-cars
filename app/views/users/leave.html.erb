@@ -1,2 +1,6 @@
-<h1>Users#leave</h1>
-<p>Find me in app/views/users/leave.html.erb</p>
+<div class="container">
+		<div class="row">
+　　　　　　<div class="col-lg-9">
+<h2>本当に退会しますか？</h2>
+<%= link_to "はい", user_path(current_user), method: :delete, data: {confirm: "本当にいいですか？"}, class: "btn btn-danger" %>
+<%= link_to "いいえ", edit_user_path(current_user) %>
