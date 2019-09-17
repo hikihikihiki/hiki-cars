@@ -28,13 +28,12 @@ Rails.application.routes.draw do
   resources :mycars,only: %i(create edit update destroy index new)
   end
 
-  resources :users, only: %i(show leave new edit destroy create update)
+  resources :users
   resources :mycars, only: %i(index new edit destroy create update)
   get'/mycars/search' => 'mycars#search'
   root 'mycars#top'
 
-
-  resources :comments, only: %i(show create edit update)
   get  'comments/new' => 'comments#new', as: 'new_comments'
+  resources :comments, only: %i(show create edit update)
 
 end

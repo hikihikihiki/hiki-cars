@@ -1,1 +1,23 @@
-<h1>マイページ</h1>
+<div class="container">
+		<div class="row">
+　　　　　　<div class="col-lg-9">
+<h3>Mypage</h3>
+<%= link_to 'Edit user', edit_user_path %>
+
+<ul>
+      <p><%= current_user.name %></p>
+
+      <% if @user.images.attached? %>
+        <% @user.images.each do |image| %>
+          <%= image_tag image.variant(resize: "100x100") %> <br>
+        <% end %>
+      <% end %>
+        <p>Maker</p>
+        <p><%= current_user.maker %></p>
+    	<p>livein</p>
+    	<p><%= @user.livein %></p>
+    	<p>introduce</p>
+    	<p><%= current_user.introduce %></p>
+
+
+</ul>

@@ -1,1 +1,33 @@
-aaa
+<div class="container">
+   <div class="row">
+      <div class="col-lg-9">
+<h1>Profile Edit</h1>
+
+<%= form_with model: @user, local: true do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name,:size=>"60x10" %>
+  </div>
+
+  <div>
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true %>
+  </div>
+  <div>
+  <div class="field">
+  <%= form.label :livein %>
+  <%= form.select :livein, User.liveins.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+  </div>
+  <div><%= form.label :maker %>
+    <%= form.select :maker, User.makers.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+  <div>
+    <%= form.label :introduce %>
+    <%= form.text_area :introduce,:size=>"100x10" %>
+  </div>
+
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
