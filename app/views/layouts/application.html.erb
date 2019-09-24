@@ -11,57 +11,62 @@
   </head>
   <body>
 
-    <header class="navbar navbar-inverse bg-dark text-white">
-      <% if user_signed_in? %>
-       <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
-        <div><%= image_tag 'test.jpeg', :size =>'150x150' %></div>
-       </nav>
-       <nav>
-         <ul class="nav navbar-nav navbar-right">
-          <li>
-           <%= link_to "HOME", mycars_path(current_user.id) %>
-          </li>
-          <li>
-          <%= link_to "Mypage", user_path(current_user) %>
-          </li>
-          <li>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-          </li>
-         </ul>
-       </nav>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a>Find a low floor</a>
+        </div>
+       <% if user_signed_in? %>
+           <ul class="menu">
+            <li>
+             <%= link_to "HOME", root_path %>
+            </li>
+            <li>
+             <%= link_to "USERS", users_path %>
+            </li>
+            <li>
+             <%= link_to "Mypage", user_path(current_user) %>
+            </li>
+            <li>
+             <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            </li>
+           </ul>
+        </div>
+      </div>
+    </nav>
        <% elsif admin_signed_in?  %>
        <nav class="nav navbar-nav navbar-left">
           <span class="navbar-brand">管理者ログイン</span>
        </nav>
-       <nav>
           <ul class="nav navbar-nav navbar-right">
             <li>
               <%= link_to "HOME", admins_root_path %>
             </li>
             <li>
-              <%= link_to "一覧", admins_mycars_path %>
-            </li>
-            <li>
-              <%= link_to "メーカー追加", admins_makers_path %>
-            </li>
-            <li>
               <%= link_to "Logout", destroy_user_session_path, method: :delete %>
             </li>
           </ul>
-        </nav>
+        </div>
+      </div>
+    </nav>
         <% else %>
-          <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
-            <div><%= image_tag 'test.jpeg', :size =>'150x150' %></div>
-           </nav>
-           <nav>
-            <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+           <li>
+             <%= link_to "HOME", root_path %>
+            </li>
+           <li>
+             <%= link_to "USERS", users_path %>
+           </li>
            <li>
             <%= link_to "NewAccount", new_user_registration_path %>
            </li>
            <li>
             <%= link_to "Login", new_user_session_path %>
            </li>
-           </ul>
+        </ul>
+        </div>
+      </div>
+    </nav>
       <%end%>
 
 

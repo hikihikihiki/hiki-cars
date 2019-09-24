@@ -5,6 +5,17 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,:confirmable
+
+  def self.search(search)
+      if search
+        livein = User.liveins.select { |k, v| k.include?(search) }.values&.first
+        maker = User.makers.select { |k, v| k.include?(search) }.values&.first
+        User.where(['name LIKE ? OR livein = ? OR maker = ? OR syasyu LIKE ?', "%#{search}%", livein, maker, "%#{search}%"])
+      else
+        Uer.all
+      end
+  end
+
   def password_required?
     super && confirmed?
   end
@@ -16,7 +27,7 @@ class User < ApplicationRecord
   def inactive_message
     confirmed? ? super : :needs_confirmation
   end
-  validates :name, presence: true, length: { maximum: 20 }
+  validates :name, length: { maximum: 20 }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validates :introduce, length: { maximum: 255 }
 

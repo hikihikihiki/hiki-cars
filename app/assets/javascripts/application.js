@@ -18,6 +18,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require select2
+//= require slick.min
 //= require_tree .
 
 $('.js-searchable').select2({

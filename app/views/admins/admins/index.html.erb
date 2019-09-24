@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>ユーザー一覧</h2>
+  	<table class="table table-hover">
+    	<thead>
+        	<tr>
+        		<th>email</th>>
+				<th>twitter_id</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @users.each do |user| %>
+				<tr>
+					<td><%=link_to user.email,user_path(user) %></td>
+					<td><%= user.twitter_id %></td>
+				</tr>
+			<%end%>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+	<h2>Users Search</h2>
+	<%= will_paginate @users %>
+	<%= form_tag(users_search_path,:method => 'get') do %>
+		<%= text_field_tag :search %>
+		<%= submit_tag 'Search', :name => nil %>
+	<% end %>
+   <div class="row">
+		<% @users.each do |user| %>
+			<%= link_to(user_path(user), class: 'content') do %>
+				<div class="user-box">
+		     		<% if user.images.attached? %>
+		     			<div class="user-box-img">
+		    				<%= image_tag user.images.first, class: "img" %>
+		     		<% end %>
+						</div>
+		 					<div class="user-text">
+								<p><%= user.name %></p>
+								<p><%= user.livein %> </p>
+								<p><%= user.syasyu %></p>
+								<p><%= user.maker %></p>
+         					</div>
+ 	    				</div>
+ 			<%end%>
+ 		<%end%>
+	</div>
+</div>
