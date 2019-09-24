@@ -1,12 +1,9 @@
 <h2><%= "本登録" %></h2>
+<h3>パスワード6文字以上で決めてください。</h3>
 
 <%= form_for(resource, as: resource_name, url: users_confirm_path) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :"name" %>
-    <%= f.text_field :name, autofocus: true %>
-  </div>
 
   <div class="field">
     <%= f.label :password %>

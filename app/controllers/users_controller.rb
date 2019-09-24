@@ -1,12 +1,18 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   def show
     @user = User.find(params[:id])
   end
 
   def index
+    @users = User.paginate(page: params[:page], per_page: 8)
   end
 
   def leave
+  end
+
+  def search
+    @users = User.search(params[:search])
   end
 
   def edit
@@ -16,14 +22,21 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+    redirect_to users_path
   end
 
   def update
      @user = User.find(params[:id])
      if @user.update(user_params)
-        redirect_to user_path(current_user),notice: "succsess!"
+        redirect_to user_path(@user),notice: "succsess!"
     else
       render :edit
+    end
+    if params[:user][:image_ids]
+    params[:user][:image_ids].each do |image_id|
+    image = @user.images.find(image_id)
+    image.purge
+    end
     end
   end
 
@@ -50,6 +63,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.fetch(:user, {}).permit(:name, :livein, :maker, :introduce,images: [])
+    params.fetch(:user, {}).permit(:name,:twitter_id, :livein, :maker, :introduce, :syasyu, images: [])
   end
 end

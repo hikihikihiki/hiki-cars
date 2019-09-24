@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
    	  if resource.is_a?(User)
  	     user_path(resource)
        elsif resource.is_a?(Admin)
-	     admin_root_path
+	     admins_root_path
       end
    end
 
@@ -16,6 +16,6 @@ class ApplicationController < ActionController::Base
 private
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :livein])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:twitter_id])
   end
 end

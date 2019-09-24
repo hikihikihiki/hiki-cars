@@ -1,7 +1,7 @@
 <div class="container">
    <div class="row">
-      <div class="col-lg-9">
 <h1>Profile Edit</h1>
+      <div class="col-lg-9">
 
 <%= form_with model: @user, local: true do |form| %>
   <div>
@@ -10,6 +10,10 @@
   </div>
 
   <div>
+    <% @user.images.each do |image| %>
+      <%= form.check_box :image_ids, {:multiple => true}, image.id, false %>
+      <%= image_tag image, class: "img" %> <br>
+    <% end %>
     <%= form.label :images %>
     <%= form.file_field :images, multiple: true %>
   </div>
@@ -20,6 +24,10 @@
   </div>
   <div><%= form.label :maker %>
     <%= form.select :maker, User.makers.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+    <div>
+    <p>Type</p>
+    <%= form.text_field :syasyu,:size=>"60x10" %>
+  </div>
   <div>
     <%= form.label :introduce %>
     <%= form.text_area :introduce,:size=>"100x10" %>

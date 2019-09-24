@@ -72,3 +72,5 @@ gem 'font-awesome-sass', '~> 5.4.1'
 
 gem 'kaminari'
 gem 'mini_magick', '~> 4.8'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'

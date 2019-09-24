@@ -1,23 +1,32 @@
 <div class="container">
 		<div class="row">
+        <h3>Mypage</h3>
 　　　　　　<div class="col-lg-9">
-<h3>Mypage</h3>
-<%= link_to 'Edit user', edit_user_path %>
-
-<ul>
-      <p><%= current_user.name %></p>
-
-      <% if @user.images.attached? %>
-        <% @user.images.each do |image| %>
-          <%= image_tag image.variant(resize: "100x100") %> <br>
+    <ul>
+      <h4><%= @user.name %>'s page</h4>
+        <% if @user.images.attached? %>
+            <% @user.images.each do |image| %>
+              <%= image_tag image, class: "img" %> <br>
+            <% end %>
         <% end %>
-      <% end %>
-        <p>Maker</p>
-        <p><%= current_user.maker %></p>
-    	<p>livein</p>
-    	<p><%= @user.livein %></p>
-    	<p>introduce</p>
-    	<p><%= current_user.introduce %></p>
 
+        <p>Twitter</p>
+        <p><%= @user.twitter_id %></p>
+      	<p>Livein</p>
+      	<p><%= @user.livein %></p>
+      	<p>Maker</p>
+        <p><%= @user.maker %></p>
+        <p>Type</p>
+        <p><%= @user.syasyu %></p>
+      	<p>Introduce</p>
+      	<p><%= @user.introduce %></p>
+    </ul>
 
-</ul>
+     <% if current_user.id == @user.id %>
+       <div>
+        <%= link_to 'Edit user', edit_user_path %>
+        <%= link_to 'Delete user' ,users_leave_path %>
+       </div>
+     <%end%>
+  </div>
+</div>
