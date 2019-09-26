@@ -22,6 +22,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   end
 
   def confirm
+    self.resource = resource_class.find_by_confirmation_token(params[:confirmation_token]) if params[:confirmation_token].present?
     confirmation_token = params[resource_name][:confirmation_token]
     self.resource = resource_class.find_by_confirmation_token!(confirmation_token)
     if resource.update_attributes(confirm_params)

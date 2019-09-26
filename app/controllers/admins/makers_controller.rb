@@ -1,4 +1,4 @@
-class Admins::MakersController < Admins::ApplicationController
+class Admins::MakersController < ApplicationController
 
   def index
     @new_maker = Maker.new
