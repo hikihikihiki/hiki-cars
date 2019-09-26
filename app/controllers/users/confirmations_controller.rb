@@ -17,23 +17,14 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   end
   
   def show
-::Rails::logger.info '======show======'
-::Rails::logger.info params[:confirmation_token]
     self.resource = resource_class.find_by_confirmation_token(params[:confirmation_token]) if params[:confirmation_token].present?
-::Rails::logger.info self.resource
-::Rails::logger.info resource
     super if resource.nil? or resource.confirmed?
   end
 
   def confirm
-::Rails::logger.info '======confirm======'
     self.resource = resource_class.find_by_confirmation_token(params[:confirmation_token]) if params[:confirmation_token].present?
-::Rails::logger.info '======confirm1======'
     confirmation_token = params[resource_name][:confirmation_token]
-::Rails::logger.info '======confirm2======'
     self.resource = resource_class.find_by_confirmation_token!(confirmation_token)
-::Rails::logger.info '======confirm3======'
-::Rails::logger.info confirm_params
     if resource.update_attributes(confirm_params)
       self.resource = resource_class.confirm_by_token(confirmation_token)
       set_flash_message :notice, :confirmed
