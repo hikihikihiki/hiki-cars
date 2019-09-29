@@ -6,7 +6,7 @@
 		<%= submit_tag 'Search', :name => nil %>
 	<% end %>
    <div class="row">
-		<% @users.each do |user| %>
+		<% @user.each do |user| %>
 			<%= link_to(user_path(user), class: 'content') do %>
 				<div class="user-box">
 		     		<% if user.images.attached? %>
